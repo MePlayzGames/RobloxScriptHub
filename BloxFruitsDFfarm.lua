@@ -1,6 +1,6 @@
-if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
+-- if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
 
-if not game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then repeat wait() until game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart") end
+-- if not game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then repeat wait() until game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart") end
 
 wait(1)
 
