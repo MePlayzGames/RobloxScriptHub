@@ -1,5 +1,5 @@
 print("Running DF Farm")
-warn("Version: 0.0.2")
+warn("Version: 0.0.3")
 
 if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
 
@@ -60,6 +60,8 @@ while wait (1) do
 		if v:IsA("Tool") then
 			if string.find(v.Name, "Fruit") then
 				print(v.Name)
+				game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = v.Handle.CFrame * CFrame.new(0,0,8)
+				v.Handle.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame
 			end
 		end
 	end
