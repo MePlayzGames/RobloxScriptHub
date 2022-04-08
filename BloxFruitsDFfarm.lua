@@ -1,5 +1,5 @@
 print("Running DF Farm")
-warn("Version: 0.0.1")
+warn("Version: 0.0.2")
 
 game:GetService("StarterGui"):SetCore("SendNotification",{
 	Title = "MePlayzGames#3667", 
@@ -8,7 +8,7 @@ game:GetService("StarterGui"):SetCore("SendNotification",{
 })
 
 while wait (1) do
-	for i,v in pairs(FruitList) do
+	for i,v in pairs(FruitList) and game.PlaceID == 4442272183 do
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StoreFruit",v)
 	end
 	
@@ -19,3 +19,4 @@ while wait (1) do
 			end
 		end
 	end
+end
