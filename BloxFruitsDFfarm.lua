@@ -2,6 +2,7 @@ print("Running DF Farm")
 warn("Version: 0.0.4")
 
 local FarmRunning = false
+local Teleporting = false
 
 if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
 
@@ -114,7 +115,7 @@ FruitList = {
 	"Dragon-Dragon"
 }
 
-while wait (1) do
+while wait (1) and not Teleporting do
 
 	for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
 		if v:IsA("Tool") then
@@ -136,6 +137,10 @@ while wait (1) do
 	end
 	
 	if not FarmRunning then
+		print(NoFruit)
+		
+		Teleporting = true
+		
 		for i,v in pairs(FruitList) and game.PlaceId == 4442272183 do 
 			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StoreFruit",v)
 		end
