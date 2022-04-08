@@ -50,11 +50,9 @@ FruitList = {
 }
 
 while wait (1) do
-	--[[
 	for i,v in pairs(FruitList) and game.PlaceID == 4442272183 do 
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StoreFruit",v)
 	end
-	]]
 
 	for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
 		if v:IsA("Tool") then
