@@ -16,15 +16,18 @@ print("Executed")
   
          HRP.CFrame = v.CFrame
          
+      --[[
          repeat
             HRP.CFrame = v.CFrame
             wait()
          until HRP.CFrame = v.CFrame
          FarmInProgress = false
+      ]]
       end
    end       
 -- end
 
+--[[
 while task.wait(10) and not FarmInProgress do
    local isFruit = false
    
@@ -39,3 +42,4 @@ while task.wait(10) and not FarmInProgress do
       TeleportService:Teleport(game.PlaceId, player)
    end
 end
+ ]]
