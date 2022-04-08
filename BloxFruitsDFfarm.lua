@@ -1,5 +1,3 @@
-print("Hello")
---[[
 if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
 
 repeat wait() until game:GetService("Players")
@@ -71,4 +69,3 @@ while wait (1) and not Teleporting do
 		end
 	end
 end
-]]
