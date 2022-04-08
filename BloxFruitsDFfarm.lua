@@ -33,6 +33,7 @@ while task.wait(10) and not FarmInProgress do
    end  
    
    if not isFruit and not FarmInProgress then
+      print("Could not find fruit")
       TeleportService:Teleport(game.PlaceId, player)
    end
 end
