@@ -10,9 +10,8 @@ warn("Version: 0.0.4")
 local FarmRunning = false
 
 game:GetService("StarterGui"):SetCore("SendNotification",{
-	Title = "MePlayzGames#3667", 
-	Text = "Exploiting is very not epik",
-	Icon = "rbxassetid://7028540906"
+	Title = "Running DF Farm", 
+	Text = "Made by MePlayzGames#3667",
 })             
 
 FruitList = {
