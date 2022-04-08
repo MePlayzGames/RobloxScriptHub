@@ -11,8 +11,7 @@ local HRP = player.Character.PrimaryPart
       if string.find(v.Name, "Fruit") then  
          FarmInProgress = true
          print("FoundFruit")
-         
-         HRP.Anchored = true
+  
          HRP.CFrame = v.CFrame
       end
    end       
