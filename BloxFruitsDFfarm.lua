@@ -13,6 +13,12 @@ local HRP = player.Character.PrimaryPart
          print("FoundFruit")
   
          HRP.CFrame = v.CFrame
+         
+         repeat
+            HRP.CFrame = v.CFrame
+            wait()
+         until HRP.CFrame = v.CFrame
+         FarmInProgress = false
       end
    end       
 -- end
@@ -26,7 +32,7 @@ while task.wait(10) and not FarmInProgress do
       end
    end  
    
-   if not isFruit and FarmInProgress then
+   if not isFruit and not FarmInProgress then
       TeleportService:Teleport(game.PlaceId, player)
    end
 end
