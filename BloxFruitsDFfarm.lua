@@ -6,6 +6,8 @@ local FarmInProgress = false
 local player = game.Players.LocalPlayer
 local HRP = player.Character.PrimaryPart
 
+print("Executed")
+
 -- if game.PlaceId == 4442272183 then
    for i, v in pairs(game:GetService("Workspace"):GetChildren()) do
       if string.find(v.Name, "Fruit") then  
