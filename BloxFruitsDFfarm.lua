@@ -1,14 +1,13 @@
-print("Running DF Farm")
-warn("Version: 0.0.4")
-
-local FarmRunning = false
-local Teleporting = false
-
 if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
 
 repeat wait() until game:GetService("Players")
 
 if not game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then repeat wait() until game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart") end
+
+print("Running DF Farm")
+warn("Version: 0.0.4")
+
+local FarmRunning = false
 
 game:GetService("StarterGui"):SetCore("SendNotification",{
 	Title = "MePlayzGames#3667", 
@@ -64,10 +63,6 @@ while wait (1) and not Teleporting do
 				wait(0.5)
 				game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = v.Handle.CFrame * CFrame.new(0,0,8)
 				v.Handle.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame
-				
-				if game.PlaceId == 4442272183 then
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StoreFruit",v)
-				end
 
 				FarmRunning = false
 			end
