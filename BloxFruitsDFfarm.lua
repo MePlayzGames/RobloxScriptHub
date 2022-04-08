@@ -1,5 +1,7 @@
 print("Running DF Farm")
-warn("Version: 0.0.3")
+warn("Version: 0.0.4")
+
+local FarmRunning = false
 
 if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
 
@@ -12,6 +14,69 @@ game:GetService("StarterGui"):SetCore("SendNotification",{
 	Text = "Exploiting is very not epik",
 	Icon = "rbxassetid://7028540906"
 })
+
+function Hop()
+	local PlaceID = game.PlaceId
+	local AllIDs = {}
+	local foundAnything = ""
+	local actualHour = os.date("!*t").hour
+	local Deleted = false
+	local function TPReturner()
+		local Site;
+		if foundAnything == "" then
+			Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
+		else
+			Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
+		end
+		local ID = ""
+		if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
+			foundAnything = Site.nextPageCursor
+		end
+		local num = 0;
+		for i,v in pairs(Site.data) do
+			local Possible = true
+			ID = tostring(v.id)
+			if tonumber(v.maxPlayers) > tonumber(v.playing) then
+				for _,Existing in pairs(AllIDs) do
+					if num ~= 0 then
+						if ID == tostring(Existing) then
+							Possible = false
+						end
+					else
+						if tonumber(actualHour) ~= tonumber(Existing) then
+							local delFile = pcall(function()
+								AllIDs = {}
+								table.insert(AllIDs, actualHour)
+							end)
+						end
+					end
+					num = num + 1
+				end
+				if Possible == true then
+					table.insert(AllIDs, ID)
+					wait()
+					pcall(function()
+						wait()
+						game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
+					end)
+					wait(4)
+				end
+			end
+		end
+	end
+	
+	local function Teleport() 
+		while wait() do
+			pcall(function()
+				TPReturner()
+				if foundAnything ~= "" then
+					TPReturner()
+				end
+			end)
+		end
+	end
+	Teleport()
+end               
 
 FruitList = {
 	"Bomb-Bomb",
@@ -50,17 +115,31 @@ FruitList = {
 }
 
 while wait (1) do
-	for i,v in pairs(FruitList) and game.PlaceId == 4442272183 do 
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StoreFruit",v)
-	end
 
 	for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
 		if v:IsA("Tool") then
 			if string.find(v.Name, "Fruit") then
 				print(v.Name)
-				game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = v.Handle.CFrame * CFrame.new(0,0,8)
-				v.Handle.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame
+				
+				FarmRunning = true
+				
+				repeat 
+					game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = v.Handle.CFrame * CFrame.new(0,0,8)
+					v.Handle.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame
+				until game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame == v.Handle.CFrame * CFrame.new(0,0,8)
+				
+				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StoreFruit",v)
+				
+				FarmRunning = false
 			end
 		end
+	end
+	
+	if not FarmRunning then
+		for i,v in pairs(FruitList) and game.PlaceId == 4442272183 do 
+			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StoreFruit",v)
+		end
+		
+		Hop()
 	end
 end
