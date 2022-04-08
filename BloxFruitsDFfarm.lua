@@ -7,8 +7,3 @@ if not game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid
 wait(1)
 
 print("Ran")
-
-game.StarterGui:SetCore("SendNotification", {
-	Title = "Made by MePlayzGames."
-	Text = "Blox Fruits DF Farm has been executed."
-})
