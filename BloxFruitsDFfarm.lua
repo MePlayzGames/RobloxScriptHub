@@ -1,5 +1,5 @@
 print("Running DF Farm")
-warn("Version: 0.0.4")
+warn("Version: 0.0.5")
 
 local FarmRunning = false
 local Teleporting = false
