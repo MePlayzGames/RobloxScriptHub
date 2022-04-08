@@ -18,5 +18,5 @@ pcall(function()
 						game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = OldCFrame
 					end
 				end
-	end
+
 end)
