@@ -21,6 +21,8 @@ print("Executed")
 
 while task.wait(10) and not FarmInProgress do
 	local isFruit = false
+	
+	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Cousin","Buy")
 
 	for i, v in pairs(game:GetService("Workspace"):GetChildren()) do
 		if string.find(v.Name, "Fruit") then  
@@ -31,6 +33,8 @@ while task.wait(10) and not FarmInProgress do
 				print("FoundFruit")
 
 				HRP.CFrame = v.Handle.CFrame * CFrame.new(0,0,8)
+				
+				game:GetService("Players").LocalPlayer.Character:FindFirstChild(_G.SelectFruitEat).EatRemote:InvokeServer()
 			end
 		end
 	end  
