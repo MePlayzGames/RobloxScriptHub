@@ -1,7 +1,9 @@
-local player = game.Players.LocalPlayer
+local TweenService = game:GetService("TweenService")
 local TeleportService = game:GetService("TeleportService")
+
 local FarmInProgress = false
 
+local player = game.Players.LocalPlayer
 local HRP = player.Character.PrimaryPart
 
 -- if game.PlaceId == 4442272183 then
@@ -11,6 +13,7 @@ local HRP = player.Character.PrimaryPart
          print("FoundFruit")
          
          HRP.Anchored = true
+         HRP.CFrame = v.CFrame
       end
    end       
 -- end
