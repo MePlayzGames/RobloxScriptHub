@@ -50,7 +50,7 @@ FruitList = {
 }
 
 while wait (1) do
-	for i,v in pairs(FruitList) and game.PlaceID == 4442272183 do 
+	for i,v in pairs(FruitList) and game.PlaceId == 4442272183 do 
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StoreFruit",v)
 	end
 
