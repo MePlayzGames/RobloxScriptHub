@@ -1,5 +1,5 @@
 print("Running DF Farm")
-warn("Version: 0.9.5")
+warn("Version: 0.9.6")
 
 local FarmRunning = false
 local Teleporting = false
@@ -14,6 +14,11 @@ game:GetService("StarterGui"):SetCore("SendNotification",{
 	Title = "MePlayzGames#3667", 
 	Text = "Exploiting is very not epik",
 })
+
+if game.Players.LocalPlayer.PlayerGui.Main.ChooseTeam.Visible == true and not game:GetService("RunService"):IsStudio() then
+	game:GetService("VirtualUser"):CaptureController()
+	game:GetService("VirtualUser"):ClickButton1(Vector2.new(0, 544, 0, 398))
+end
 
 function Hop()
 	local PlaceID = game.PlaceId
@@ -115,44 +120,43 @@ FruitList = {
 }
 
 spawn(function()
-		pcall(function()
-	while wait (1) and not Teleporting do 
-	for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
-	if v:IsA("Tool") then
-		if string.find(v.Name, "Fruit") then
-			print(v.Name)
+	pcall(function()
+		while wait (1) and not Teleporting do 
+			for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+				if v:IsA("Tool") then
+					if string.find(v.Name, "Fruit") then
+						print(v.Name)
 
-			FarmRunning = true
+						FarmRunning = true
 
-			wait(0.5)
-			game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = v.Handle.CFrame * CFrame.new(0,0,8)
-			v.Handle.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame
-				
-			if game.PlaceId == 4442272183 then
-				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StoreFruit",v)
+						wait(0.5)
+						game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = v.Handle.CFrame * CFrame.new(0,0,8)
+						v.Handle.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame
+
+						if game.PlaceId == 4442272183 then
+							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StoreFruit",v)
+						end
+
+						FarmRunning = false
+					end
+				end
 			end
 
-			FarmRunning = false
-		end
-	end
-end
-	
-	if not FarmRunning then
-		print("NoFruit")
+			if not FarmRunning then
+				print("NoFruit")
 
-		Teleporting = true
-		
-		if game.PlaceId == 4442272183 then
-			for i,v in pairs(FruitList) do 
-				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StoreFruit",v)
+				Teleporting = true
+
+				if game.PlaceId == 4442272183 then
+					for i,v in pairs(FruitList) do 
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StoreFruit",v)
+					end
+				end
+
+				Hop()
+
+				break
 			end
-		end
-
-		Hop()
-		
-		break
-	end
-end			
-    end)
+		end			
+	end)
 end)
-
