@@ -1,5 +1,5 @@
 print("Running DF Farm")
-warn("Version: 0.9.0")
+warn("Version: 0.9.5")
 
 local FarmRunning = false
 local Teleporting = false
@@ -114,7 +114,10 @@ FruitList = {
 	"Dragon-Dragon"
 }
 
-for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+spawn(function()
+		pcall(function()
+	while wait (1) and not Teleporting do 
+	for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
 	if v:IsA("Tool") then
 		if string.find(v.Name, "Fruit") then
 			print(v.Name)
@@ -133,8 +136,7 @@ for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
 		end
 	end
 end
-
-while wait (1) and not Teleporting do 
+	
 	if not FarmRunning then
 		print("NoFruit")
 
@@ -150,4 +152,7 @@ while wait (1) and not Teleporting do
 		
 		break
 	end
-end
+end			
+    end)
+end)
+
