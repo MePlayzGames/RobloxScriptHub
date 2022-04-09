@@ -147,5 +147,7 @@ while wait (1) and not Teleporting do
 		end
 
 		Hop()
+		
+		break
 	end
 end
