@@ -1,5 +1,5 @@
 print("Running DF Farm")
-warn("Version: 0.0.5")
+warn("Version: 0.9.0")
 
 local FarmRunning = false
 local Teleporting = false
@@ -114,27 +114,27 @@ FruitList = {
 	"Dragon-Dragon"
 }
 
-while wait (1) and not Teleporting do 
-	for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
-		if v:IsA("Tool") then
-			if string.find(v.Name, "Fruit") then
-				print(v.Name)
+for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+	if v:IsA("Tool") then
+		if string.find(v.Name, "Fruit") then
+			print(v.Name)
 
-				FarmRunning = true
+			FarmRunning = true
 
-				wait(0.5)
-				game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = v.Handle.CFrame * CFrame.new(0,0,8)
-				v.Handle.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame
+			wait(0.5)
+			game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = v.Handle.CFrame * CFrame.new(0,0,8)
+			v.Handle.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame
 				
-				if game.PlaceId == 4442272183 then
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StoreFruit",v)
-				end
-
-				FarmRunning = false
+			if game.PlaceId == 4442272183 then
+				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StoreFruit",v)
 			end
+
+			FarmRunning = false
 		end
 	end
+end
 
+while wait (1) and not Teleporting do 
 	if not FarmRunning then
 		print("NoFruit")
 
