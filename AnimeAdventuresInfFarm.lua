@@ -100,13 +100,13 @@ if workspace:FindFirstChild("_MAP_CONFIG") then
                 task.wait(0.1)
             until workspace._DATA.GameFinished.Value == true
 
-            task.wait(3)
+            task.wait(1)
 
             repeat
-                task.wait(0.1)
+                wait()
             until game.Players.LocalPlayer.PlayerGui.ResultsUI.Holder.Visible == false
                 start()
-                task.wait(5) -- Waits for the thing to claim (Not rlly needed but good measures
+                task.wait(1) -- Waits for the thing to claim (Not rlly needed but good measures
                 teleport()
     else
         repeat wait() until game:IsLoaded()
