@@ -26,6 +26,10 @@ local function WatermarkForIdiotYter()
 end
 
 local function FindAvalibleRoom()
+    repeat wait() until game:IsLoaded()
+    
+    task.wait(5)
+    
     if workspace:FindFirstChild("_MAP_CONFIG") then
         if workspace._MAP_CONFIG.IsLobby.Value == true then
             for i, v in pairs(workspace._LOBBIES.Story:GetChildren()) do
