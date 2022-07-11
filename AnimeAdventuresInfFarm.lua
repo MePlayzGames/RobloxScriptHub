@@ -4,6 +4,8 @@ getgenv().act = "namek_infinite"
 
 repeat wait() until game:IsLoaded()
 
+print("Version: 0.1.1")
+
 task.spawn(function()
     while task.wait() and getgenv().hidename do
         pcall(function()
@@ -28,7 +30,7 @@ local function FindAvalibleRoom()
         if workspace._MAP_CONFIG.IsLobby.Value == true then
             for i, v in pairs(workspace._LOBBIES.Story:GetChildren()) do
                 if v.Active.Value == false then
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Door.CFrame
+                    game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = v.Door.CFrame
                     print(v.Name)
                     return v.Name
                 end
