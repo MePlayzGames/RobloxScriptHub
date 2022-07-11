@@ -4,7 +4,7 @@ getgenv().act = "namek_infinite"
 
 repeat wait() until game:IsLoaded()
 
-print("Version: 0.1.2")
+print("Version: 0.1.3")
 
 task.spawn(function()
     while task.wait() and getgenv().hidename do
@@ -28,7 +28,7 @@ end
 local function FindAvalibleRoom()
     repeat wait() until game:IsLoaded()
     
-    task.wait(30)
+    task.wait(17)
     
     if workspace:FindFirstChild("_MAP_CONFIG") then
         if workspace._MAP_CONFIG.IsLobby.Value == true then
