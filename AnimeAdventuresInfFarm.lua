@@ -111,6 +111,8 @@ if workspace:FindFirstChild("_MAP_CONFIG") then
     else
         repeat wait() until game:IsLoaded()
         
+        WatermarkForIdiotYter()
+        
         while true do
             join()
             task.wait(1)
@@ -119,9 +121,6 @@ if workspace:FindFirstChild("_MAP_CONFIG") then
             task.wait(1)
 
             start2()
-            task.wait()
-
-            WatermarkForIdiotYter()
             task.wait(5)
         end
     end
