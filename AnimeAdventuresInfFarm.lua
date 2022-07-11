@@ -4,7 +4,7 @@ getgenv().act = "namek_infinite"
 
 repeat wait() until game:IsLoaded()
 
-print("Version: 0.1.3")
+print("Version: 0.1.4")
 
 task.spawn(function()
     while task.wait() and getgenv().hidename do
