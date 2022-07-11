@@ -28,7 +28,7 @@ end
 local function FindAvalibleRoom()
     repeat wait() until game:IsLoaded()
     
-    task.wait(17)
+    game.Players.LocalPlayer.CharacterAppearanceLoaded:Wait()
     
     if workspace:FindFirstChild("_MAP_CONFIG") then
         if workspace._MAP_CONFIG.IsLobby.Value == true then
