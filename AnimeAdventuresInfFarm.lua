@@ -1,4 +1,4 @@
-if not game.PlaceId == 8304191830 then
+if not game.PlaceId == 8304191830 and not game.Players.LocalPlayer.Name == "AlmostDumb" then
    return 
 end
 
@@ -8,7 +8,7 @@ getgenv().act = "namek_infinite"
 
 repeat wait() until game:IsLoaded()
 
-print("Version: 0.1.5")
+print("Version: 0.1.6")
 
 task.spawn(function()
     while task.wait() and getgenv().hidename do
